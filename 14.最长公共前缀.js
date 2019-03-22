@@ -53,16 +53,19 @@ var longestCommonPrefix = function(strs) {
         sets[i] = new Set()
         strs.forEach(item => {
             if(!item){
+                // 数组中有空元素
                 x= 'f'
                 return 
             }
             if (!item[i]) {
+                // 后面元素没有第一个元素长
                 x = i
                 return
             }
             sets[i].add(item[i])
         })
         if(x === 'f'){
+            // 有空元素直接返回
             return ""
         }
         if(x) {
@@ -78,5 +81,4 @@ var longestCommonPrefix = function(strs) {
     return strs[0]
 };
 
-console.log(longestCommonPrefix(["aa", "a"]))
 
