@@ -37,7 +37,46 @@
  * @param {string[]} strs
  * @return {string}
  */
+
+ // 遍历字符串, 然后push 到set 里 哪个set长度为2 即终止
 var longestCommonPrefix = function(strs) {
-    
+    if(!strs[0]){
+        return ""
+    }
+    if(strs.length === 1){
+        return strs[0]
+    }
+    let len = strs[0].length
+    let sets = []
+    let x = ''
+    for(var i=0; i<len; i++){
+        sets[i] = new Set()
+        strs.forEach(item => {
+            if(!item){
+                x= 'f'
+                return 
+            }
+            if (!item[i]) {
+                x = i
+                return
+            }
+            sets[i].add(item[i])
+        })
+        if(x === 'f'){
+            return ""
+        }
+        if(x) {
+            return strs[0].slice(0, i)
+        }
+        // console.log(sets[i])
+        if (sets[i].size > 1) {
+            return strs[0].slice(0, i)
+        }
+    }
+    console.log(x)
+
+    return strs[0]
 };
+
+console.log(longestCommonPrefix(["aa", "a"]))
 
