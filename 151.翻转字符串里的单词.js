@@ -57,6 +57,8 @@
  * @return {string}
  */
 var reverseWords = function(s) {
-    
-};
+    return s.split(' ').filter(i => i).reverse().join(' ')
+    // return s.split(/\s+/).reverse().join(' ')
+}
+console.log(reverseWords('"  hello world!  "'));
 

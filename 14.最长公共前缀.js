@@ -49,7 +49,7 @@ var longestCommonPrefix = function(strs) {
     let len = strs[0].length
     let sets = []
     let x = ''
-    for(var i=0; i<len; i++){
+    tag: for(var i=0; i<len; i++){
         sets[i] = new Set()
         strs.forEach(item => {
             if(!item){
@@ -60,7 +60,7 @@ var longestCommonPrefix = function(strs) {
             if (!item[i]) {
                 // 后面元素没有第一个元素长
                 x = i
-                return
+                break tag;
             }
             sets[i].add(item[i])
         })
@@ -76,9 +76,22 @@ var longestCommonPrefix = function(strs) {
             return strs[0].slice(0, i)
         }
     }
-    console.log(x)
-
     return strs[0]
 };
 
-
+var longestCommonPrefix = function (strs) {
+    if (strs.length == 0) return "";
+    var start = strs[0].split('');
+    var result = '';
+    com: for (var i = 0; i < start.length; i++) {
+        result = result + start[i];
+        for (var j = 1; j < strs.length; j++) {
+            if (!(strs[j].indexOf(result) == 0)) {
+                result = result.substr(0, result.length - 1);
+                break com;
+            }
+        }
+    }
+    return result;
+};
+console.log(longestCommonPrefix(["flower", "flow", "flight"]))
