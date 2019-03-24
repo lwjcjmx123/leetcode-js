@@ -34,7 +34,36 @@
  * @param {number} k
  * @return {string}
  */
-var reverseStr = function(s, k) {
-    
+var reverseStr = function (s, k) {
+    // 首先切分字符串,分为左右两边,再考虑边界情况
+    // let len = s.length
+    // // 取余获取右边剩下的长度
+    // let rem = len % (2 * k)
+    // let left = s.slice(0, -rem)
+    // let right = s.slice(-rem)
+    // let bus = (len - rem) / (2 * k)
+    // for (let i = 0; i < bus, i++) {
+    //     for (let j = 0, start = i * 2 * k; j < k/2; j++) {
+
+    //     }
+    // }
+    if (k <= 1) {
+        return s;
+    }
+    var Arr = [];
+    for (var i = 0; i < s.length; i += 2 * k) {
+        var subStr = s.slice(i, i + 2 * k);
+        var arr = subStr.split('');
+        if (arr.length <= k) {
+            var str = arr.reverse().join('');
+        } else {
+            var subArr = arr.slice(0, k);
+            subArr.reverse();
+            var str = subArr.concat(arr.slice(k, 2 * k)).join('');
+        }
+        Arr[i] = str;
+    }
+    var result = Arr.join('');
+    return result;
 };
 
