@@ -61,6 +61,7 @@ var removeDuplicates = function (nums) {
     if(len <2) {
         return len
     }
+    //双指针技巧 快慢不同,确保留下的数组都是不重复的.重复的过滤掉了
     let i = 0
     for (let j = 1; j < len; j++) {
         if(nums[i] !== nums[j]){
