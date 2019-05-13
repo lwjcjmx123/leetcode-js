@@ -8,17 +8,18 @@
  * @return {number}
  */
 var lengthOfLastWord = function(s) {
-    console.log(s.split(' '));
-    let arr = s.split(' ')
-    let len = arr.length
-    if (len < 1 || !(/\w+/.test(s))) return 0
-    let pos = arr.lastIndexOf('')
-    while (pos === arr.length-1) {
-        arr.pop()
-        pos = arr.lastIndexOf('')
-    }
-    return arr[arr.length-1].length
-};
+    // let arr = s.split(' ')
+    // let len = arr.length
+    // if (len < 1 || !(/\w+/.test(s))) return 0
+    // let pos = arr.lastIndexOf('')
+    // while (pos === len-1) {
+    //     arr.pop()
+    //     len--
+    //     pos = arr.lastIndexOf('')
+    // }
+    // return arr[len-1].length
 
-console.log(lengthOfLastWord("b   a    "));
+    s = s.trim()
+    return s.length - s.lastIndexOf(' ') - 1
+};
 
