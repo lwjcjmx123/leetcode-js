@@ -11,7 +11,7 @@
  * @return {void} Do not return anything, modify nums1 in-place instead.
  */
 var merge = function(nums1, m, nums2, n) {
-    // 本题思路 就是 归并排序，多指针。分治法 nums1 和 2 分别有首指针
+    // 本题思路 就是 归并排序，多指针 nums1 和 nums2 分别一个指针
     let arr = [...nums1]
     let i=0,j=0,l=0;
     // 3指针遍历，
@@ -30,6 +30,5 @@ var merge = function(nums1, m, nums2, n) {
     while (j<n) {
         nums1[l++] = nums2[j++]
     }
-    
 };
 // merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6],3)
