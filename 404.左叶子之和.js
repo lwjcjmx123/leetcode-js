@@ -15,21 +15,21 @@
  * @return {number}
  */
 
-var sumOfLeftLeaves = function (x, isLeft) {
-  // let res = 0
-  // if (root === null) return res
-  // if (root.left && root.left.val) {
-  //   res += root.left.val
-  // }
-  // if (root.left && root.left.left)
-  //   res += sumOfLeftLeaves(root.left)
-  // if (root.right && root.right.left)
-  //   res += sumOfLeftLeaves(root.right)
-  // return res
-  if (!x) return 0
-  if (!x.left && !x.right && isLeft) return x.val
+var sumOfLeftLeaves = function (root, isLeft) {
+  if (root === null) return 0
+  let res = 0
+  if (root === null) return 0
+  if (root.left && root.left.left == null && root.left.right == null) {
+    res += root.left.val
+  }
 
-  return sumOfLeftLeaves(x.left, true) + sumOfLeftLeaves(x.right, false)
+  res += sumOfLeftLeaves(root.left)
+  res += sumOfLeftLeaves(root.right)
+  return res
+  // if (!x) return 0
+  // if (!x.left && !x.right && isLeft) return x.val
+
+  // return sumOfLeftLeaves(x.left, true) + sumOfLeftLeaves(x.right, false)
 
 };
 
